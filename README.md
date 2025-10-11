@@ -59,17 +59,19 @@ To run `demo.cpp` just do `cmake .`, `make` and then `./demo`.
 ## Callback interface version
 
 Instead of overloading the `run()` method in the timer class you can
-overload the `run()` method in the `Runnable` class and then registers
+overload the `run()` method in the `Runnable` class and then register
 this class with the timer class.  Check out `demo_callbackinterface` which
-demonstrates how to use this method.
+demonstrates this approach.
 
 ## Callback via lambda function
 
 Here, the callback is a `std::function` which then calls the
 suscriber with the help of a lambda function
 instead of a callback interface. This allows direct registering
-of a method of the receiving class. It also allows more flexibility in doing
-some work inside of the lambda function and it's entirely pointer-free!
+of a method of the receiving class without an interface. 
+It's also more flexile because
+some work can be done inside of the lambda function 
+and it's entirely pointer-free!
 
 The recommended approach in modern C++!
 
