@@ -1,10 +1,7 @@
 #ifndef __CPP_TIMER_STD_CALLBACK
 #define __CPP_TIMER_STD_CALLBACK
-#include <stdio.h>
 #include "CppTimer.h"
-#include <unistd.h>
 #include <functional>
-#include <vector>
 
 // This is a demo how to create a callback with std::function which allows
 // calling methods in other classes by registering a lambda function!
@@ -18,8 +15,10 @@ public:
     void registerEventCallback(CallbackFunction cf) {
 	callbackFunction = cf;
     }
-    
-    inline void timerEvent() {
+
+private:
+    // overloading the abstract function
+    inline void timerEvent() override {
 	callbackFunction();
     }
 

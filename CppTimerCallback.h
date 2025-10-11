@@ -1,8 +1,6 @@
 #ifndef __CPP_TIMER_CALLBACK
 #define __CPP_TIMER_CALLBACK
-#include <stdio.h>
 #include "CppTimer.h"
-#include <unistd.h>
 #include <vector>
 
 // Demo which creates a callback interface as the abstract class "Runnable".
@@ -19,14 +17,14 @@ public:
     void registerEventRunnable(Runnable &h) {
 	cppTimerEventRunnables.push_back(&h);
     }
-    
+
+private:
     void timerEvent() {
 	for(auto & r : cppTimerEventRunnables) {
 	    r->run();
 	}
     }
 
-private:
     std::vector<Runnable*> cppTimerEventRunnables;
 };
 
