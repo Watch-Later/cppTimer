@@ -6,25 +6,31 @@
 // Demo which creates a callback interface as the abstract class "Runnable".
 // This then allows to register a callback.
 
-class CppTimerCallback : public CppTimer {
+class CppTimerCallbackInterface : public CppTimer {
     
 public:
+    // An interface which can be added
+    // to the receiving class. We call it runnable
+    // it contains a single method called "run"!
     class Runnable {
     public:
 	virtual void run() = 0;
     };
-    
+
+    // The subscriber registers it.
     void registerEventRunnable(Runnable &h) {
 	cppTimerEventRunnables.push_back(&h);
     }
 
 private:
-    void timerEvent() {
+    // overrides the abstract timer event
+    void timerEvent() override {
 	for(auto & r : cppTimerEventRunnables) {
 	    r->run();
 	}
     }
 
+    // vector of all the subscribers
     std::vector<Runnable*> cppTimerEventRunnables;
 };
 

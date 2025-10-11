@@ -14,8 +14,8 @@ add_library(cpptimer INTERFACE)
 add_executable(demo demo.cpp)
 TARGET_LINK_LIBRARIES(demo cpptimer)
 
-add_executable(demo_runnable demo_runnable.cpp)
-TARGET_LINK_LIBRARIES(demo_runnable cpptimer)
+add_executable(demo_callbackinterface demo_callbackinterface.cpp)
+TARGET_LINK_LIBRARIES(demo_callbackinterface cpptimer)
 
 add_executable(demo_stdfunccallback demo_stdfunccallback.cpp)
 TARGET_LINK_LIBRARIES(demo_stdfunccallback cpptimer)
